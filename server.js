@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const session = require('express-session');
-// const routes = require('./controllers');
+const routes = require('./controllers');
 const exphbs = require('express-handlebars');
 
 const app = express();
@@ -20,9 +20,7 @@ const sess = {
   })
 };
 
-
 app.use(session(sess));
-
 
 const hbs = exphbs.create();
 
@@ -34,8 +32,8 @@ app.use(express.urlencoded({ extended: true }));
 //connect with public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// turn on routes
-// app.use(routes);
+//turn on routes
+app.use(routes);
 
 
 // turn on connection to db and server
